@@ -60,6 +60,13 @@
                                     <li><a href="{% url 'service'%}">Services</a></li>
                                     <li><a href="{% url 'contact'%}">Contact</a></li>
                                     {% if request.user.is_authenticated %}
+                                        {% if request.user.is_superuser %}
+                                        
+                                        <li><a href="{% url 'custom_admin:admin_dashboard' %}">Dashboard</a></li>
+
+                                        {% else %}
+                                        <li><a href="{% url 'account:dashboard' %}">Dashboard</a></li>
+                                        {% endif %}
                                     <li><a href="{% url 'account:logout' %}">Logout</a></li>
                                     {% else %}
                                     <li><a href="{% url 'account:login' %}">Login</a></li>

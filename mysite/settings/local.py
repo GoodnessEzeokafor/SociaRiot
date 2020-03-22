@@ -147,6 +147,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
 
 #AUTH
 LOGIN_REDIRECT_URL = reverse_lazy('account:dashboard')
+ADMINLOGIN_REDIRECT_URL = reverse_lazy('custom_admin:admin_dashboard')
+
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 
 MESSAGE_TAGS = {

@@ -31,10 +31,14 @@ class CustomLoginView(LoginView):
     success_url = reverse_lazy('home')
     form_class=LoginForm
 
+  
     def get_success_url(self):
         # role = Users.objects.get(membership)
         url = self.get_redirect_url()
-        return url or resolve_url(settings.LOGIN_REDIRECT_URL)
+        if self.request.user.is_superuser:
+            return url or resolve_url(settings.ADMINLOGIN_REDIRECT_URL)
+        else:
+            return url or resolve_url(settings.LOGIN_REDIRECT_URL)
 
     def get(self, request,*args, **kwargs):
         if request.user.is_authenticated:

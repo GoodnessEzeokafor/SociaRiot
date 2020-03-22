@@ -31,7 +31,7 @@ handler400 = 'utils.views.page_not_found'
 handler500 = 'utils.views.server_error'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('dev/admin/', admin.site.urls),
 
     path('', include('account.urls')),
     path('', views.HomeView.as_view(), name="home"),
@@ -42,5 +42,5 @@ urlpatterns = [
     path('password_reset/done/',PasswordResetDoneView.as_view(template_name="account/password_reset_email_done.html"), name="password_reset_done"),
     path("reset/<uidb64>/<token>/",PasswordResetConfirmView.as_view(template_name="account/password_reset_confirm.html", form_class=SetPasswordNewForm), name="password_reset_confirm"),
     path("reset/done/", PasswordResetCompleteView.as_view(template_name="account/password_reset_done.html"), name="password_reset_complete"),
-
+    path('admin/', include('custom_admin.urls')),
 ]
