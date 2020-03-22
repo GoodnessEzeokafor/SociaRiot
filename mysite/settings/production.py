@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
     'custom_admin.apps.CustomAdminConfig',
-
+    'utils'
 ]
 
 MIDDLEWARE = [

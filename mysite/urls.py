@@ -25,6 +25,11 @@ from account.forms import (
     PasswordChangeNewForm, PasswordResetNewForm,SetPasswordNewForm
 )
 from . import views 
+
+
+handler400 = 'utils.views.page_not_found'
+handler500 = 'utils.views.server_error'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
