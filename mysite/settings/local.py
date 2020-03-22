@@ -138,8 +138,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
 
 
 #AUTH
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_REDIRECT_URL = reverse_lazy('account:dashboard')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
+
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
