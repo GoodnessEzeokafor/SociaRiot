@@ -147,7 +147,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
 
 
 #AUTH
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_REDIRECT_URL = reverse_lazy('account:dashboard')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
