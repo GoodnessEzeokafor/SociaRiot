@@ -1,0 +1,121 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include "includes/sidebaradmin.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-header">
+                <h3 class="card-title">Create Profile</h3>
+    
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+                </div>
+                </div>
+                <!-- /.card-header -->
+                <form method="POST"  enctype="multipart/form-data">
+
+                <div class="card-body">
+                <div class="row">
+                        {% csrf_token%}
+                        {% if form.errors %}
+                        <div class="col-md-12" style="color: red;">
+                            {{ form.errors}}
+                        </div>
+                        {% endif %}
+                            
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Enter Full Name:</label>
+                            {{ form.fullname}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="customFile">Company Name</label>
+                            <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                            {{form.company_name}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="customFile">Company Address</label>
+                            <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                            {{form.company_address}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="customFile">Company Telephone No</label>
+                            <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                            {{form.company_telephone_no}}
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <label for="customFile">Profile Pic</label>
+                            <div class="custom-file">
+                            <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                            {{form.profile_pic}}
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Country</label>
+                        {{ form.country }}
+                        <!-- <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">Alabama</option>
+                        <option>Alaska</option>
+                        <option>California</option>
+                        <option>Delaware</option>
+                        <option>Tennessee</option>
+                        <option>Texas</option>
+                        <option>Washington</option>
+                        </select> -->
+                    </div>
+                    </div>
+                    <!-- /.col -->
+
+                </div>
+                <div class="col-md-12">
+                    <button  type="submit" class="btn btn-block btn-primary">Create Profile</button>
+                </div>
+                <!-- /.row -->
+    
+                <!-- /.row -->
+                </div>
+            </form> 
+                <!-- /.card-body
+                <div class="card-footer">
+                Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                the plugin.
+                </div> -->
+            </div>
+            <!-- /.card -->
+    
+            <!-- /.card -->
+    
+            <!-- /.card -->
+    
+            <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </div>
+{% endblock  %}

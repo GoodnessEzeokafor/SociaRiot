@@ -11,12 +11,18 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        {% if request.user.profile_admin %}
         <div class="image">
-          <img src="{% static 'dashboard/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{request.user.profile_admin.profile_pic.url}}" class="img-circle elevation-2" alt="User Image">
         </div>
+        {% endif %}
+
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          {% if request.user.profile_admin %}
+          <a href="#" class="d-block">{{request.user.profile_admin.fullname}}</a>
+          {% endif %}
         </div>
+
       </div>
 
       <!-- Sidebar Menu -->
@@ -35,7 +41,7 @@
               </li>
               
           <li class="nav-item">
-            <a href="{% url 'custom_admin:admin_dashboard' %}" class="nav-link">
+            <a href="{% url 'custom_admin:admin_dashboard'   %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -43,11 +49,32 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          {% if request.user.profile_admin %}
+          <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Edit Profile
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'custom_admin:profile_create'   %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Add Profile
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item has-treeview">
+            <a href="{% url 'custom_admin:profile_detail' request.user.profile_admin.id %}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Layout Options
+                Profile
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>

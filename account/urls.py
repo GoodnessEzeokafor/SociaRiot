@@ -32,6 +32,7 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(template_name="account/logout.html"), name="logout"),
     path("signup/", views.SignUpView.as_view(), name="signup"),
     path("dashboard/", views.dashboard, name="dashboard"),
+    path("dashboard/profile/create", views.CompanyProfileCreateView.as_view(), name="profile_create")
     # path('dashboard/track/<int:pk>/',views.DashboardTrackDetailView.as_view(), name="track_detail"),
     # # path('dashboard/track/<int:pk>/master',views.master, name="track_master"),
     # re_path('dashboard/track/(?P<username>\w+)/download/$',views.download_mastered_files, name="track_mastered_download"),

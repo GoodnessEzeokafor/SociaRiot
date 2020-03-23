@@ -6,7 +6,7 @@ from  django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from .forms import LoginForm
+from .forms import LoginForm,CompanyProfileCreateForm
 from django.urls import reverse_lazy, reverse
 # Create your views here.
 from django.views.generic import (
@@ -21,7 +21,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import os
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from .models import CompanyProfile
 
 
 
@@ -53,4 +53,27 @@ class Dashboard(View):
         return render(request, self.template_name, {})
 
 
+class CompanyProfileCreateView(CreateView):
+    model = CompanyProfile
+    template_name = "custom_admin/profile/create.html"
+    form_class=CompanyProfileCreateForm
+    # success_url="/account/dashboard/"
+
+    def form_valid(self, form):
+        user = User.objects.get(id=self.request.user.id)
+        form.instance.user = user
+        print("#################################")
+        print(form.instance.user)
+        print("#################################")
+        # form.instance.save()
+        form.save()
+        return super().form_valid(form)    
     
+    def get_success_url(self):
+        return reverse("custom_admin:admin_dashboard")
+
+
+class CompanyProfileDetailView(DetailView):
+    model = CompanyProfile
+    template_name = "custom_admin/profile/detail.html"
+    context_object_name= "profile"

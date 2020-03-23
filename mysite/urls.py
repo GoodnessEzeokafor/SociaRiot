@@ -44,3 +44,9 @@ urlpatterns = [
     path("reset/done/", PasswordResetCompleteView.as_view(template_name="account/password_reset_done.html"), name="password_reset_complete"),
     path('admin/', include('custom_admin.urls')),
 ]
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

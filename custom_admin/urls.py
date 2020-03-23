@@ -21,5 +21,10 @@ app_name ="custom_admin"
 
 urlpatterns = [
     path('login', views.AdminLoginView.as_view(), name="admin_login"),
-    path('dashboard', views.Dashboard.as_view(),name="admin_dashboard")
+    path('dashboard', views.Dashboard.as_view(),name="admin_dashboard"),
+    path("dashboard/<int:pk>/profile", views.CompanyProfileDetailView.as_view(), name="profile_detail"),
+    path("dashboard/profile/create", views.CompanyProfileCreateView.as_view(), name="profile_create"),
+
 ]
+
+
