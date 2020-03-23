@@ -22,7 +22,7 @@ class SignupForm(forms.ModelForm):
         
         self.fields['username'].widget.attrs.update({
                 'class':'form-control material', 
-                'placeholder':'Enter Username'
+                'placeholder':'Enter Username or Email to log in'
                 })
         self.fields['email'].widget.attrs.update({
                 'class':'form-control material',
