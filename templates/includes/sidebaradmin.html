@@ -79,6 +79,8 @@
               </p>
             </a>
           </li>
+          {% if request.user.profile_admin %}
+
           <li class="nav-item has-treeview">
             <a href="{% url 'custom_admin:profile_detail' request.user.profile_admin.id %}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -133,6 +135,7 @@
               </li>
             </ul> -->
           </li>
+          {% endif %}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -7,6 +7,9 @@
 {% block content %}
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+
+    {% if request.user.profile_admin %}
+
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -613,5 +616,32 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    {% else %}
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+              <div class="row">
+        <div class="col-md-12">
+          <!-- Block buttons -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Add Profile</h3>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'custom_admin:profile_create' %}"  class="btn btn-success btn-block btn-flat">ADD PROFILE</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- WHAT I NEED -->
+      <!-- /. row -->
+    </div><!-- /.container-fluid -->
+  </section>
+    {% endif %}
   </div>
 {% endblock %}
